@@ -17,9 +17,10 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                       Trigger is a simple class that lets you conditionally call blocks of code. Great for conditionally showing onboarding tips and A/B testing.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/Trigger"
+  s.homepage         = "https://github.com/trifl/Trigger"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "JP McGlone" => "jp@trifl.co" }
