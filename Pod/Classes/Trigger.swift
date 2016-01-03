@@ -8,7 +8,7 @@ public class Trigger {
     private let action: (trigger: Trigger) -> Void
     
     // To temporarily, or permanently, disable the trigger, call invalidate()
-    private var valid = true
+    private var _valid = true
     
     // MARK: - Init
     public init(condition: (trigger: Trigger) -> Bool, action: (trigger: Trigger) -> Void) {
@@ -18,16 +18,16 @@ public class Trigger {
     
     // MARK: - Public methods
     public func pull() {
-        if valid && condition(trigger: self) {
+        if _valid && condition(trigger: self) {
             action(trigger: self)
         }
     }
     
     public func invalidate() {
-        valid = false
+        _valid = false
     }
     
     public func validate() {
-        valid = true
+        _valid = true
     }
 }
