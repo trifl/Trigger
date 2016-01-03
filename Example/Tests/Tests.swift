@@ -6,42 +6,49 @@ import Trigger
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
-        describe("these will fail") {
-
-            it("can do maths") {
-                expect(1) == 2
-            }
-
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+        var trigger: Trigger!
+        var value = 0
+        
+        describe("Trigger condition always returns true") {
+            beforeEach {
+                trigger = Trigger(condition: { trigger in
+                        return true
+                    }, action: { trigger in
+                        value = 1
+                })
             }
             
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
+            afterEach {
+                value = 0
+            }
+            
+            it("should set value to 1") {
+                trigger.pull()
+                expect(value) == 1
+            }
+            
+            context("invalidated") {
+                beforeEach {
+                    trigger.invalidate()
                 }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
+                
+                afterEach {
+                    trigger.validate()
                 }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    dispatch_async(dispatch_get_main_queue()) {
-                        time = "done"
+                
+                it("should keep value at 0") {
+                    trigger.pull()
+                    expect(value) == 0
+                }
+                
+                context("validate again") {
+                    beforeEach {
+                        trigger.validate()
                     }
-
-                    waitUntil { done in
-                        NSThread.sleepForTimeInterval(0.5)
-                        expect(time) == "done"
-
-                        done()
+                    
+                    it ("should set value to 1") {
+                        trigger.pull()
+                        expect(value) == 1
                     }
                 }
             }

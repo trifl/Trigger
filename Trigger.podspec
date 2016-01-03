@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "Trigger"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of Trigger."
+  s.version          = "1.0.0"
+  s.summary          = "Trigger is a simple class that lets you conditionally call blocks of code. Great for conditionally showing onboarding tips and A/B testing."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "JP McGlone" => "jp@trifl.co" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/Trigger.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/trifl/Trigger.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
